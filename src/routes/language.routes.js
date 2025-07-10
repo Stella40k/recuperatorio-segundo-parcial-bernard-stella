@@ -1,10 +1,9 @@
 import { Router } from "express";
-//falta la importacion de controladores
+import { getAllPrograma, getProgramaById, createPrograma, updatePrograma,deletePrograma } from "../controllers/language.controller.js";
 export const routes = Router()
 
-//faltan las funciones o rutas de los controles
-routes.get("/languages", )
-routes.get("/languages/:id", )
-routes.post("/languages", )
-routes.put("/languages/:id", )
-routes.delete("/languages/:id", )
+routes.get("/languages", getAllPrograma),
+routes.get("/languages/:id", getProgramaById),
+routes.post("/languages", createPrograma),
+routes.put("/languages/:id", updatePrograma),
+routes.delete("/languages/:id", deletePrograma)
