@@ -6,6 +6,7 @@ export const programa = sequelize.define( "Programa", {
         type: DataTypes.INTEGER,
         allowNull: false,
         unique: true,
+        primaryKey: true
 
     },
     name: {

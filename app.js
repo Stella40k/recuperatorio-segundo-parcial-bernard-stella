@@ -1,13 +1,13 @@
 import express from "express";
 import "dotenv/config";
 import { connect } from "./src/config/database.js";
-//exportar las rutas cuando lo termine :P
+import { routes } from "./src/routes/language.routes.js";
 
 const app = express();
 const PORT = process.env.PORT;
 
 app.use(express.json());
-/* app.use("/api", routes); */
+app.use("/api", routes);
 
 app.listen(PORT, () =>{
     console.log(`Server corriendo en el puerto ${PORT}`);
