@@ -1,0 +1,13 @@
+import express from "express";
+import "dotenv/config";
+//importar despues la coneccion desde databaseee
+
+const app = express();
+const PORT = process.env.PORT;
+
+app.use(express.json());
+/* app.use("/api", routes);  cuando tenga lo de las rutas le descomento*/
+
+app.listen(PORT, () =>{
+    console.log(`Server corriendo en el puerto ${PORT}`);
+});
