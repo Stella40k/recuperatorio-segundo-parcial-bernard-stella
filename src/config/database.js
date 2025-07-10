@@ -18,4 +18,4 @@ export const connect = async() => {
     } catch (error) {
         console.log("error al conectar con la bd", error);
     }
-}
+};
