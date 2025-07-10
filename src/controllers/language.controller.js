@@ -39,7 +39,9 @@ export const createPrograma = async (req, res) => {
         }
         if (!paradigm || paradigm.trim() === "") {
             return res.status(400).json({message: "no se permiten campos vacios"});
-        }     
+        }
+        const nuevoPrograma = await programa.create({ name, paradigm, release_year });
+        return res.status(201).json({ message: "programa creado", programa: nuevoPrograma }); 
     } catch (error) {
         console.log(error)
         return res.status(500).json({message: "error con el servidor", error: error.message});
