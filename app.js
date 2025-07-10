@@ -1,6 +1,7 @@
 import express from "express";
 import "dotenv/config";
 import { connect } from "./src/config/database.js";
+//exportar las rutas cuando lo termine :P
 
 const app = express();
 const PORT = process.env.PORT;
