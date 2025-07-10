@@ -14,10 +14,11 @@ export const getAllPrograma = async (req, res) => {
 //traere uno solo por su id
 export const getProgramaById =async (req, res) =>{
     try {
-        const programa = programa.findByPk(req.params.id);
-        if(!programa){
+        const prog = programa.findByPk(req.params.id);
+        if(!prog){
         return res.status(404).json({error: "No se pudo traer al programa"});
         }
+        return res.status(200).json(prog);
     } catch (error) {
         return res.status(404).json({error: "No existe el programa o esta mal puesto la id", error: error.message});
       
