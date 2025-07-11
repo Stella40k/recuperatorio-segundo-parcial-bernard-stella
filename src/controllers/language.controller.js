@@ -14,10 +14,11 @@ export const getAllPrograma = async (req, res) => {
 //traere uno solo por su id
 export const getProgramaById =async (req, res) =>{
     try {
-        const prog = programa.findByPk(req.params.id);
+        const prog = await programa.findByPk(req.params.id);
         if(!prog){
         return res.status(404).json({error: "No se pudo traer al programa"});
         }
+        console.log(prog)
         return res.status(200).json(prog);
     } catch (error) {
         return res.status(404).json({error: "No existe el programa o esta mal puesto la id", error: error.message});
@@ -32,7 +33,7 @@ export const createPrograma = async (req, res) => {
         if(!name || !paradigm || !release_year){
             return res.status(400).json({message: "completa los campos obligatorios"});
         }
-        if (!release_year && release_year !== 'number') {
+        if (!release_year && release_year !== Number) {
             return res.status(400).json({message: "solo numeros enteros"});
         }
         if (!name || name.trim() === "") {
@@ -79,8 +80,9 @@ export const deletePrograma = async (req, res) => {
             return res.status(404).json({message: "no se encontro el programa"});
         }
 
-        await programa.destroy();
-        res.status(200).json({message: "se elimino un programa"});
+       const data =  await programa.destroy();
+       const borrado = data.json()
+        res.status(200).json({message: "se elimino un programa", borrado});
     } catch (error) {
         return res.status(500).json({message: "error con el servidor", error: error.message});
     }
